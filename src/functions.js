@@ -29,11 +29,11 @@ console.log(sumOfArray([1, 4, 5])) // Output: The sum is odd
 
 // write a function that takes an array and of items and return only integers
 
-function onlyIntegers(arr){
-    let integer = []
-    for(let i = 0; i < arr.length; i++){
-        if(Number.isInteger(arr[i])){
-            integer.push(arr[i])
+function onlyIntegers(arr){  // name the function onlyIntegers and pass in an array as a parameter
+    let integer = [] // declare a variable called integer and assign it an empty array
+    for(let i = 0; i < arr.length; i++){ // declare a for loop that will loop through the array and set the condition to the length of the array 
+        if(Number.isInteger(arr[i])){ // check if the current element is an integer
+            integer.push(arr[i]) // if it is an integer, push it to the integer array 
         }
     }
     return integer
