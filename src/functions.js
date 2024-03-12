@@ -52,4 +52,15 @@ function multiplyByTwo(arr){ // name the function multiplyByTwo and pass in an a
     return multiplied
 }
 
-console.log(multiplyByTwo([1, 2, 3, 4, 5])) // Output: [2, 4, 6, 8, 10]
+console.log(multiplyByTwo([1, 2, 3, 4, 5])) 
+
+function arrayby2(arr){
+    for (i = 0; i < arr.length; i++){
+        arr[i] *= 2
+    }
+    return arr
+}
+
+const onelinearray = (arr) => arr.map(el  => el * 2) 
+
+console.log(arrayby2([1, 2, 22, 4, 5])) // Output: [2, 4, 6, 8, 10]
