@@ -2,13 +2,13 @@ function greeting(){
     return console.log('Hello World')
 }
 
-console.log(greeting()) // Output: Hello World
+// console.log(greeting()) // Output: Hello World
 
 function add(num1, num2){
     return num1 + num2
 }
 
-console.log(add(10, 20)) 
+// console.log(add(10, 20)) 
 
 // write a function that takes an array wether the sum of its element is even or odd, the value should return a string that says "The sum is even" or "The sum is odd"
 
