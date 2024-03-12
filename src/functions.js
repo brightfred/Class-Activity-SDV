@@ -30,11 +30,13 @@ console.log(sumOfArray([1, 4, 5])) // Output: The sum is odd
 // write a function that takes an array and of items and return only integers
 
 function onlyIntegers(arr){
-    let newArr = []
+    let integer = []
     for(let i = 0; i < arr.length; i++){
         if(Number.isInteger(arr[i])){
-            newArr.push(arr[i])
+            integer.push(arr[i])
         }
     }
-    return newArr
+    return integer
 }
+
+console.log(onlyIntegers([1, 2, 3, 'a', 'b', 4])) // Output: [1, 2, 3, 4]
