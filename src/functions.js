@@ -40,3 +40,16 @@ function onlyIntegers(arr){  // name the function onlyIntegers and pass in an ar
 }
 
 console.log(onlyIntegers([1, 2, 3, 'a', 'b', 4])) // Output: [1, 2, 3, 4]
+
+
+// write a function that takes an array with numbers and return an array with the element multiplied by 2
+
+function multiplyByTwo(arr){ // name the function multiplyByTwo and pass in an array
+    let multiplied = [] // declare a variable called multiplied and assign it an empty array
+    for(let i = 0; i < arr.length; i++){ // declare a for loop that will loop through the array and set the condition to the length of the array
+        multiplied.push(arr[i] * 2) // multiply each element by 2 and push it to the multiplied array
+    }
+    return multiplied
+}
+
+console.log(multiplyByTwo([1, 2, 3, 4, 5])) // Output: [2, 4, 6, 8, 10]
