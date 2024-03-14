@@ -286,3 +286,4 @@ for (let n = 0; n < numbers.length; n++) {
         console.log(temp + ' is odd');
     }
 } 
+
