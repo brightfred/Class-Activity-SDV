@@ -50,10 +50,22 @@ function countArrays(arr) { // Create a function named countArrays that takes an
 console.log(countArrays([[1,2],[3,4],5])) // Output: 2
 
 
+// create a function that takes a number as an argument and returns an array of numbers
+// counting down from the given number to zero.
 
+function countDown(num) { // Create a function named countDown that takes a number as an argument.
+    let result = []; // Create a variable named result and assign it an empty array.
+    for (let i = num; i >= 0; i--) { // Create a for loop that iterates through the numbers starting from the given number and counting down to zero.
+        result.push(i); // Add the current number to the result array.
+    }
+    return result; // Return the result array after the loop has finished running and all the numbers have been added to the array.
+}
 
+console.log(countDown(10)) 
 
+// refactor it in ES6
 
-
+const countDownEs6 = num => Array.from (Array(num =  20).keys ()).reverse() // Create a function named countDown that takes a number as an argument and uses the Array.from method to create a new array with the length of the given number and the map method to iterate through the array and return a new array with the numbers counting down from the given number to zero.
+console.log(countDownEs6(5)) // Output: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
 
 
