@@ -69,3 +69,4 @@ const countDownEs6 = num => Array.from (Array(num =  20).keys ()).reverse() // C
 console.log(countDownEs6(5)) // Output: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
 
 
+give 
