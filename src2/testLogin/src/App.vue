@@ -5,6 +5,7 @@
     <button @click="login" v-if="!isAuthenticated">Login</button>
     <button @click="logoutUser" v-if="isAuthenticated">Logout</button>
     <img src="https://images.phylopic.org/images/9b87d61c-900c-4ad2-8abb-56a7b30bfc95/vector.svg" alt="Phylopic Image" class="phylopic-image"/>
+  
   </div>
 </template>
 
@@ -73,8 +74,7 @@ button + button {
   margin-top: 2rem;
   width: 100px;
   height: 100px;
-  filter: invert(39%) sepia(99%) saturate(5724%) hue-rotate(193deg) brightness(94%) contrast(105%);
-  transition: filter 0.3s ease;
+color: #0056b3;
 }
 
 .phylopic-image:hover {
