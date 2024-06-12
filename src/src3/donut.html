@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donut Chart with Icons</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .canvs-container {
+            width: 30%;
+            height: auto;
+        }
+        body{
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="canvs-container">
+    <canvas id="myIconDonutChart"></canvas></div>
+    <script>
+        var ctx = document.getElementById('myIconDonutChart').getContext('2d');
+
+        // Simulated data from an API
+        var data = [
+            {
+                name: 'Bacteria',
+                img: 'https://openmoji.org/data/color/svg/1F9A0.svg', // Bacteria icon
+                proportion: 25
+            },
+            {
+                name: 'Virus',
+                img: 'https://openmoji.org/data/color/svg/1F9A0.svg', // Virus icon
+                proportion: 25
+            },
+            {
+                name: 'Fungi',
+                img: 'https://openmoji.org/data/color/svg/1F9A0.svg', // Fungi icon
+                proportion: 25
+            },
+            {
+                name: 'Protozoa',
+                img: 'https://openmoji.org/data/color/svg/1F9A0.svg', // Protozoa icon
+                proportion: 25
+            }
+        ];
+
+        // Create arrays for labels, data, and images
+        var labels = data.map(item => item.name);
+        var proportions = data.map(item => item.proportion);
+        var images = data.map(item => {
+            var img = new Image();
+            img.src = item.img;
+            return img;
+        });
+
+        // Ensure all images are loaded before rendering the chart
+        var imagesLoaded = 0;
+        images.forEach(img => {
+            img.onload = () => {
+                imagesLoaded++;
+                if (imagesLoaded === images.length) {
+                    renderChart();
+                }
+            };
+        });
+
+        function renderChart() {
+            console.log('All icons loaded. Rendering chart...');
+            var myIconDonutChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: proportions,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    layout: {
+                        padding: {
+                            top: 20,
+                            left: 20,
+                            right: 20,
+                            bottom: 20
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Donut Chart with Icons'
+                        }
+                    }
+                },
+                plugins: [{
+                    afterDatasetsDraw: function(chart) {
+                        var ctx = chart.ctx;
+                        var chartArea = chart.chartArea;
+                        var centerX = (chartArea.left + chartArea.right) / 2;
+                        var centerY = (chartArea.top + chartArea.bottom) / 2;
+                        var outerRadius = chart.getDatasetMeta(0).data[0].outerRadius;
+                        var offset = outerRadius + 20; // Position icons outside the donut
+
+                        console.log('Drawing icons around the chart...');
+                        
+                        // Retrieve the angles for each segment
+                        var angles = chart.getDatasetMeta(0).data.map(function(segment) {
+                            return (segment.startAngle + segment.endAngle) / 2;
+                        });
+
+                        // Position each icon based on the calculated angles
+                        images.forEach(function(img, index) {
+                            var angle = angles[index];
+                            var x = centerX + offset * Math.cos(angle);
+                            var y = centerY + offset * Math.sin(angle);
+                            ctx.drawImage(img, x - 15, y - 15, 30, 30);
+                        });
+
+                        console.log('Icons drawn.');
+                    }
+                }]
+            });
+        }
+    </script>
+</body>
+</html>
